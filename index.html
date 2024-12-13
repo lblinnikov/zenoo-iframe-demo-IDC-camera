@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embed Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Onboarding</h1>
+        <p>Please perform the onboarding via our partner below:</p>
+        <iframe id="zenoo-embed"></iframe>
+    </div>
+
+    <script>
+        // Retrieve the start token from sessionStorage
+        const startToken = sessionStorage.getItem('start-token');
+
+        if (startToken) {
+            const script = document.createElement('script');
+            script.src = "https://onboard-test-ie.zenoo.io/0bf671bd5f651f7a0e67dc507dc264ec53da1a0d/assets/embed.js";
+            script.setAttribute('iframe-id', 'zenoo-embed');
+            script.setAttribute('start-token', startToken);
+
+            document.body.appendChild(script);
+        } else {
+            console.error('Start token not found');
+        }
+    </script>
+</body>
+</html>
